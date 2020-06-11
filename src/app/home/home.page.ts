@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private alertController: AlertController,
+  ) {}
 
+  confirmClickThis() {
+    alert('ion-content clicked now');
+  }
+
+  async launchAlertController() {
+    const alert = await this.alertController.create({
+      header: 'TITLE',
+      buttons: ['close']
+    });
+    await alert.present();
+  }
 }
